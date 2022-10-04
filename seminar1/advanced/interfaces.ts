@@ -5,6 +5,6 @@ export interface Member {
 
 export interface Dinner {
   member: Member[];
-  shuffle(array: Member[]): Member[];
-  organize(array: Member[]): void;
+  menu: string[];
+  organize(member: Member[], menu: string[]): void;
 }

@@ -1,4 +1,5 @@
 import { Dinner, Member } from './interfaces';
+import _ from 'lodash';
 
 const dinner: Dinner = {
   member: [
@@ -23,15 +24,14 @@ const dinner: Dinner = {
       group: 'yb',
     },
   ],
-  shuffle(array): Member[] {
-    array.sort(() => Math.random() - 0.5);
-    return array;
-  },
-  organize(array): void {
-    const dinnerMember: Member[] = this.shuffle(array);
+  menu: ['닭갈비', '치킨', '피자', '떡볶이'],
 
-    console.log(`결과 ${dinnerMember[0].name}, ${dinnerMember[1].name}`);
+  organize(member, menu) {
+    const dinnerMember: Member[] = _.shuffle(member);
+    const dinnerMenu: string[] = _.shuffle(menu);
+
+    console.log(`결과 ${dinnerMember[0].name}, ${dinnerMember[1].name} 메뉴는 ${dinnerMenu[0]}`);
   },
 };
 
-dinner.organize(dinner.member);
+dinner.organize(dinner.member, dinner.menu);
